@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin Statistics Island</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Penguin Statistics Island</h1>
+            <div class="stats">
+                <div>Measurements: <span id="measurement-count">0</span></div>
+                <div>Average Weight: <span id="average-weight">0</span> kg</div>
+                <div>Average Beak Length: <span id="average-beak">0</span> cm</div>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <div class="island">
+                <img src="/20250526_1344_Линукс-пингвины на острове_simple_compose_01jw63037qfq2bka04tgbatb9d.png" alt="Penguins Island" class="island-img">
+                <div id="penguins-container"></div>
+            </div>
+            
+            <div class="clipboard">
+                <h2>Research Data</h2>
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Penguin</th>
+                                <th>Weight (kg)</th>
+                                <th>Beak Length (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-table-body">
+                            <!-- Data will be added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="measure-btn">Measure Penguin</button>
+                <button id="generate-graph-btn">Generate Graph</button>
+            </div>
+        </div>
+        
+        <div class="graph-container">
+            <div class="graph-tabs">
+                <button class="tab-btn active" data-graph="weight">Weight Distribution</button>
+                <button class="tab-btn" data-graph="beak">Beak Length Distribution</button>
+                <button class="tab-btn" data-graph="correlation">Weight vs Beak Correlation</button>
+            </div>
+            <div class="graph-area">
+                <canvas id="stats-chart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
