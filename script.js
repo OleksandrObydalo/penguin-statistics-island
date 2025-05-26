@@ -23,6 +23,7 @@ const tabButtons = document.querySelectorAll('.tab-btn');
 const measurementCount = document.getElementById('measurement-count');
 const averageWeight = document.getElementById('average-weight');
 const averageBeak = document.getElementById('average-beak');
+const backgroundPenguins = document.querySelectorAll('.bg-penguin');
 
 // Create penguins on the island
 function createPenguins() {
@@ -70,7 +71,35 @@ function selectPenguin(penguinElement) {
         previousSelection.classList.remove('selected');
     }
     
+    // Also deselect any previously selected background penguin
+    const previousBgSelection = document.querySelector('.bg-penguin.selected');
+    if (previousBgSelection) {
+        previousBgSelection.classList.remove('selected');
+    }
+    
     // Select the clicked penguin
+    penguinElement.classList.add('selected');
+    selectedPenguin = {
+        id: penguinElement.dataset.id,
+        name: penguinElement.dataset.name
+    };
+}
+
+// Select a background penguin
+function selectBackgroundPenguin(penguinElement) {
+    // Deselect any previously selected penguin
+    const previousSelection = document.querySelector('.penguin.selected');
+    if (previousSelection) {
+        previousSelection.classList.remove('selected');
+    }
+    
+    // Deselect any previously selected background penguin
+    const previousBgSelection = document.querySelector('.bg-penguin.selected');
+    if (previousBgSelection) {
+        previousBgSelection.classList.remove('selected');
+    }
+    
+    // Select the clicked background penguin
     penguinElement.classList.add('selected');
     selectedPenguin = {
         id: penguinElement.dataset.id,
@@ -112,6 +141,13 @@ function measurePenguin() {
     if (selectedElement) {
         selectedElement.classList.remove('selected');
     }
+    
+    // Also deselect any background penguin
+    const selectedBgElement = document.querySelector('.bg-penguin.selected');
+    if (selectedBgElement) {
+        selectedBgElement.classList.remove('selected');
+    }
+    
     selectedPenguin = null;
 }
 
@@ -371,10 +407,19 @@ tabButtons.forEach(button => {
     });
 });
 
+// Initialize the game
+function initGame() {
+    createPenguins();
+    
+    // Add event listeners to background penguins
+    backgroundPenguins.forEach(penguin => {
+        penguin.addEventListener('click', () => selectBackgroundPenguin(penguin));
+    });
+}
+
 // Event listeners
 measureBtn.addEventListener('click', measurePenguin);
 generateGraphBtn.addEventListener('click', generateGraph);
 
 // Initialize the game
-createPenguins();
-
+initGame();

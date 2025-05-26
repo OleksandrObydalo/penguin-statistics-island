@@ -87,6 +87,60 @@ body {
     transform: scale(1.1);
 }
 
+#background-penguins {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bg-penguin {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s;
+    border-radius: 50%;
+}
+
+.bg-penguin:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.bg-penguin.selected {
+    outline: 3px solid #ff6b00;
+    box-shadow: 0 0 15px #ff6b00;
+}
+
+.bg-penguin:nth-child(1) {
+    left: 10%;
+    top: 50%;
+}
+
+.bg-penguin:nth-child(2) {
+    left: 28%;
+    top: 55%;
+}
+
+.bg-penguin:nth-child(3) {
+    left: 47%;
+    top: 58%;
+}
+
+.bg-penguin:nth-child(4) {
+    left: 62%;
+    top: 55%;
+}
+
+.bg-penguin:nth-child(5) {
+    left: 80%;
+    top: 60%;
+}
+
 .clipboard {
     flex: 0 0 350px;
     background-color: #fffde8;
@@ -177,4 +231,3 @@ button:hover {
     outline: 3px solid #ff6b00;
     transform: scale(1.1);
 }
-
